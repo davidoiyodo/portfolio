@@ -126,9 +126,9 @@ export default function About() {
               marginBottom: '2rem',
             }}
           >
-            I bridge the gap between what a product should feel like and what engineers can build.
-            That means I'm as comfortable in a design sprint as I am reviewing component libraries
-            or consulting on design systems.
+            I don't just design — I build. That means shipping React components, writing HTML and CSS,
+            and prototyping in Framer and Webflow. I'm as comfortable in a design sprint as I am
+            in a codebase, which means fewer handoff gaps and faster time to launch.
           </p>
           <p
             style={{
@@ -158,36 +158,41 @@ export default function About() {
               borderTop: '1px solid var(--border)',
             }}
           >
-            <p
-              style={{
-                fontSize: '0.75rem',
-                color: 'var(--text-dim)',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                marginBottom: '1rem',
-              }}
-            >
-              Tools & Skills
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               {[
-                'Figma', 'Framer', 'Webflow', 'Adobe XD', 'Illustrator',
-                'After Effects', 'User Research', 'Design Systems',
-                'UI Design', 'Design Thinking',
-              ].map((skill) => (
-                <span
-                  key={skill}
-                  style={{
-                    fontSize: '0.75rem',
-                    color: 'var(--text-muted)',
-                    border: '1px solid var(--border)',
-                    padding: '0.3rem 0.65rem',
-                    borderRadius: '2px',
-                    letterSpacing: '0.03em',
-                  }}
-                >
-                  {skill}
-                </span>
+                { label: 'Design', skills: ['Figma', 'Framer', 'Webflow', 'Adobe XD', 'Illustrator', 'After Effects', 'User Research', 'Design Systems', 'UI Design', 'Design Thinking'] },
+                { label: 'Development', skills: ['React', 'HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Framer Motion'] },
+              ].map(({ label, skills }) => (
+                <div key={label}>
+                  <p
+                    style={{
+                      fontSize: '0.75rem',
+                      color: 'var(--text-dim)',
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      marginBottom: '0.65rem',
+                    }}
+                  >
+                    {label}
+                  </p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    {skills.map((skill) => (
+                      <span
+                        key={skill}
+                        style={{
+                          fontSize: '0.75rem',
+                          color: 'var(--text-muted)',
+                          border: '1px solid var(--border)',
+                          padding: '0.3rem 0.65rem',
+                          borderRadius: '2px',
+                          letterSpacing: '0.03em',
+                        }}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>

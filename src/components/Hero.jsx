@@ -115,8 +115,8 @@ export default function Hero() {
               fontWeight: 300,
             }}
           >
-            5+ years designing products that ship — across fintech, medtech,
-            web3, hospitality, and traveltech. I close the gap between design and engineering.
+            5+ years designing and building products that ship — across fintech, medtech,
+            web3, hospitality, and traveltech. I design in Figma and build in React.
           </p>
 
           <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
