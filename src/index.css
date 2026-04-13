@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #141414;
+  --bg-card: #161616;
+  --text-primary: #F0EFE9;
+  --text-muted: #6B6B6B;
+  --text-dim: #3D3D3D;
+  --border: #222222;
+  --accent: #F0EFE9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-geist {
+  font-family: 'Geist', 'Inter', system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+
+/* Selection */
+::selection {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* ============ RESPONSIVE LAYOUT ============ */
+
+/* Nav */
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: var(--text-primary);
+  flex-direction: column;
+  gap: 5px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+/* Section horizontal padding */
+.section-pad { padding-left: 7.5rem; padding-right: 7.5rem; }
+.hero-section { padding: 0 7.5rem 5rem; }
+.work-header-pad { padding: 5rem 7.5rem 4rem; }
+.work-projects-pad { padding: 7.5rem; }
+
+/* Grids */
+.project-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 6rem;
+  align-items: start;
+}
+.experience-role-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.experience-role-grid:last-child {
+  border-bottom: none;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+}
+
+/* Project card content padding */
+.project-content-left  { padding: 4rem 3.5rem 4rem 0; }
+.project-content-right { padding: 4rem 0 4rem 3.5rem; }
+
+/* Image ordering */
+.img-order-first  { order: 1; }
+.img-order-second { order: 2; }
+.content-order-first  { order: 1; }
+.content-order-second { order: 2; }
+
+@media (max-width: 768px) {
+  /* Nav */
+  .nav-links    { display: none; }
+  .nav-hamburger { display: flex; }
+  .section-pad   { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero-section  { padding: 0 1.5rem 3rem; }
+  .work-header-pad   { padding: 3rem 1.5rem 2rem; }
+  .work-projects-pad { padding: 3rem 1.5rem; }
+
+  /* Grids → single column */
+  .project-card-grid { grid-template-columns: 1fr; min-height: auto; }
+  .about-grid        { grid-template-columns: 1fr; gap: 2.5rem; }
+  .experience-role-grid { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
+  .contact-grid      { grid-template-columns: 1fr; gap: 2.5rem; }
+
+  /* Project content padding */
+  .project-content-left,
+  .project-content-right { padding: 2rem 0 2rem 0; }
+
+  /* Reset ordering — image always on top */
+  .img-order-first, .img-order-second   { order: 1; }
+  .content-order-first, .content-order-second { order: 2; }
+
+  /* Image side: remove top/bottom padding so it fills naturally */
+  .project-img-side { padding: 0 !important; height: 260px; }
+
+  /* Reposition scroll indicator to top-right, away from subtext */
+  .scroll-indicator { top: 30%; bottom: auto !important; right: 1.5rem !important; }
+}
