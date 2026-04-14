@@ -106,18 +106,66 @@ export default function Hero() {
             gap: '2rem',
           }}
         >
-          <p
-            style={{
-              fontSize: 'clamp(0.9375rem, 1.5vw, 1.0625rem)',
-              color: 'var(--text-muted)',
-              maxWidth: '420px',
-              lineHeight: 1.7,
-              fontWeight: 300,
-            }}
-          >
-            5+ years designing and building products that ship — across fintech, medtech,
-            web3, hospitality, and traveltech. I design in Figma and build in React.
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <p
+              style={{
+                fontSize: 'clamp(0.9375rem, 1.5vw, 1.0625rem)',
+                color: 'var(--text-muted)',
+                maxWidth: '420px',
+                lineHeight: 1.7,
+                fontWeight: 300,
+              }}
+            >
+              5+ years designing and building products that ship — across fintech, medtech,
+              web3, hospitality, and traveltech. I design in Figma and build in React.
+            </p>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <a
+                href="https://calendly.com/davidoiyodo/discovery-call"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  backgroundColor: 'var(--text-primary)',
+                  color: 'var(--bg-primary)',
+                  padding: '0.75rem 1.5rem',
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.02em',
+                  textDecoration: 'none',
+                  borderRadius: '2px',
+                  transition: 'opacity 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.8')}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+              >
+                Book a call ↗
+              </a>
+              <a
+                href="mailto:davidoiyodo@gmail.com"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  border: '1px solid var(--border)',
+                  color: 'var(--text-muted)',
+                  padding: '0.75rem 1.5rem',
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.02em',
+                  textDecoration: 'none',
+                  borderRadius: '2px',
+                  transition: 'color 0.2s, border-color 0.2s',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderColor = 'var(--text-primary)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
+              >
+                Shoot me an email
+              </a>
+            </div>
+          </div>
 
           <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
             {[

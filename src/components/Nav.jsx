@@ -65,7 +65,9 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="mailto:davidoiyodo@gmail.com"
+            href="https://calendly.com/davidoiyodo/discovery-call"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               fontSize: '0.8125rem',
               color: 'var(--bg-primary)',
@@ -80,7 +82,7 @@ export default function Nav() {
             onMouseEnter={(e) => (e.target.style.opacity = '0.8')}
             onMouseLeave={(e) => (e.target.style.opacity = '1')}
           >
-            Hire me
+            Book a call
           </a>
         </nav>
 

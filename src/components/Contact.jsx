@@ -57,30 +57,57 @@ export default function Contact() {
             <span style={{ color: 'var(--text-muted)' }}>mind?</span>
           </motion.h2>
 
-          <motion.a
-            href="mailto:davidoiyodo@gmail.com"
+          <motion.div
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
-            whileHover={{ backgroundColor: 'var(--text-muted)' }}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              backgroundColor: 'var(--text-primary)',
-              color: 'var(--bg-primary)',
-              padding: '0.9rem 1.75rem',
-              fontSize: '0.9rem',
-              fontWeight: 500,
-              letterSpacing: '0.02em',
-              textDecoration: 'none',
-              borderRadius: '2px',
-              transition: 'background-color 0.2s',
-            }}
+            style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}
           >
-            Send me a message
-            <span style={{ fontSize: '1rem' }}>→</span>
-          </motion.a>
+            <a
+              href="https://calendly.com/davidoiyodo/discovery-call"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                backgroundColor: 'var(--text-primary)',
+                color: 'var(--bg-primary)',
+                padding: '0.75rem 1.5rem',
+                fontSize: '0.875rem',
+                fontWeight: 500,
+                letterSpacing: '0.02em',
+                textDecoration: 'none',
+                borderRadius: '2px',
+                transition: 'opacity 0.2s',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.8')}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+            >
+              Book a call ↗
+            </a>
+            <a
+              href="mailto:davidoiyodo@gmail.com"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                border: '1px solid var(--border)',
+                color: 'var(--text-muted)',
+                padding: '0.75rem 1.5rem',
+                fontSize: '0.875rem',
+                fontWeight: 500,
+                letterSpacing: '0.02em',
+                textDecoration: 'none',
+                borderRadius: '2px',
+                transition: 'color 0.2s, border-color 0.2s',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderColor = 'var(--text-primary)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
+            >
+              Shoot me an email
+            </a>
+          </motion.div>
         </div>
 
         {/* Right — Info */}
