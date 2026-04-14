@@ -43,13 +43,13 @@ const projects = [
   },
   {
     index: '04',
-    title: 'Lønna',
+    title: 'Lønna v1',
     category: 'AI · Job Platform · Web App',
     description:
       'An AI-driven job hunting platform for the Norwegian market with real salary data. Designed the brand identity and the full web app — for both job seekers and employers.',
     impact: 'Full brand identity + product design',
     tags: ['Brand Identity', 'Web App', 'AI Product'],
-    image: '/Lonna.png',
+    image: '/Lonna-V1.png',
     link: 'https://www.lonna.no/en',
     caseStudy: null,
     hideCaseStudy: true,
