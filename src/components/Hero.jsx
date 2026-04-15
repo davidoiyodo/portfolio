@@ -86,13 +86,13 @@ export default function Hero() {
             lineHeight: 0.92,
             letterSpacing: '-0.03em',
             color: 'var(--text-primary)',
-            marginBottom: '7.5rem',
+            marginBottom: '3rem',
             maxWidth: '1000px',
           }}
         >
-          Design
+          I design products
           <br />
-          <span style={{ color: 'var(--text-muted)' }}>Engineer.</span>
+          <span style={{ color: 'var(--text-muted)' }}>and ship them.</span>
         </motion.h1>
 
         {/* Bottom row */}
@@ -111,13 +111,15 @@ export default function Hero() {
               style={{
                 fontSize: 'clamp(0.9375rem, 1.5vw, 1.0625rem)',
                 color: 'var(--text-muted)',
-                maxWidth: '420px',
+                maxWidth: '820px',
                 lineHeight: 1.7,
                 fontWeight: 300,
               }}
             >
-              5+ years designing and building products that ship — across fintech, medtech,
-              web3, hospitality, and traveltech. I design in Figma and build in React.
+              5+ years turning product ideas into live software — across fintech, medtech, web3, and traveltech.
+              I design and prototype in Figma, build marketing sites in Framer, and ship real products through
+              AI-assisted front-end engineering. My design eye and working knowledge of front-end means the code
+              I ship actually looks like the design. No handoff required.
             </p>
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
               <a

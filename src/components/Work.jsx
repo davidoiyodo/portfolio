@@ -6,8 +6,9 @@ const projects = [
     index: '01',
     title: 'Travulens',
     category: 'Travel · Web App',
+    role: 'Design + AI Front-end Engineering',
     description:
-      'A modern travel platform built to make trip planning intuitive and visually compelling. Designed the full product experience from discovery to booking.',
+      'A travel blogging platform where real travelers share experiences from destinations around the world. I conceived the idea, built the full brand identity, designed the product in Figma, and engineered the front-end using AI-assisted tooling — then handed off to a backend developer for the API and database layer. Everything you see on the front end is mine.',
     impact: 'Live product',
     tags: ['Web App', 'Brand Identity', 'UI Design'],
     image: '/travulens.png',
@@ -19,11 +20,12 @@ const projects = [
     index: '02',
     title: 'Bankvole',
     category: 'Fintech · Mobile App',
+    role: 'Brand + Product Design',
     description:
-      'A savings and investment product designed to simplify financial growth. Gathered insights from prospective users and stakeholders before designing the full mobile experience.',
+      'A fintech app that goes beyond savings and investments — covering loans and bill payments in one experience. I owned the entire product design, from brand identity through to every screen across the full feature set. Built by a development team and live on both the App Store and Google Play.',
     impact: 'Hundreds of millions of ₦ in investments processed',
     tags: ['Mobile App', 'User Research', 'UI Design'],
-    image: 'https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=900&q=80',
+    image: '/Bankvole.png',
     link: null,
     caseStudy: null,
     appStore: 'https://apps.apple.com/ng/app/bankvole/id6478485232',
@@ -33,6 +35,7 @@ const projects = [
     index: '03',
     title: 'Dedukt',
     category: 'Fintech · Web App · Mobile',
+    role: 'Brand + Product Design',
     description:
       'Connecting traditional banks and fintech lenders to employers — simplifying loan repayment directly from employee income. Redesigned the web app for lenders, employers, and admin, plus the mobile app for employees.',
     impact: '₦2B+ monthly in loans processed · 150,000 staff onboarded',
@@ -45,6 +48,7 @@ const projects = [
     index: '04',
     title: 'Lønna v1',
     category: 'AI · Job Platform · Web App',
+    role: 'Brand + Product Design',
     description:
       'An AI-driven job hunting platform for the Norwegian market with real salary data. Designed the brand identity and the full web app — for both job seekers and employers.',
     impact: 'Full brand identity + product design',
@@ -135,6 +139,25 @@ function ProjectCard({ project, i }) {
             </span>
           </div>
 
+          {project.role && (
+            <div style={{ marginBottom: '1.75rem' }}>
+              <span
+                style={{
+                  fontSize: '0.7rem',
+                  color: 'var(--bg-primary)',
+                  backgroundColor: 'var(--text-dim)',
+                  padding: '0.25rem 0.65rem',
+                  borderRadius: '2px',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  fontWeight: 500,
+                }}
+              >
+                {project.role}
+              </span>
+            </div>
+          )}
+
           <h3
             className="font-geist"
             style={{
@@ -155,7 +178,7 @@ function ProjectCard({ project, i }) {
               color: 'var(--text-muted)',
               lineHeight: 1.75,
               fontWeight: 300,
-              maxWidth: '380px',
+              maxWidth: '520px',
             }}
           >
             {project.description}
@@ -180,25 +203,6 @@ function ProjectCard({ project, i }) {
             >
               {project.impact}
             </p>
-          </div>
-
-          {/* Tags */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem' }}>
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  fontSize: '0.7rem',
-                  color: 'var(--text-muted)',
-                  border: '1px solid var(--border)',
-                  padding: '0.25rem 0.6rem',
-                  borderRadius: '2px',
-                  letterSpacing: '0.04em',
-                }}
-              >
-                {tag}
-              </span>
-            ))}
           </div>
 
           {/* Buttons */}
