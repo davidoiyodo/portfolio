@@ -95,6 +95,21 @@ export default function Hero() {
           <span style={{ color: 'var(--text-muted)' }}>and ship them.</span>
         </motion.h1>
 
+        {/* Role tagline — keyword-explicit, uses --text-dim to stay ghost-quiet */}
+        <motion.p
+          {...fadeUp(0.28)}
+          style={{
+            fontSize: '0.8125rem',
+            color: 'var(--text-dim)',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            marginBottom: '3rem',
+            fontWeight: 400,
+          }}
+        >
+          Design Engineer &nbsp;&middot;&nbsp; Figma &amp; Framer &nbsp;&middot;&nbsp; Fintech &nbsp;&middot;&nbsp; Medtech &nbsp;&middot;&nbsp; Web3
+        </motion.p>
+
         {/* Bottom row */}
         <motion.div
           {...fadeUp(0.35)}
