@@ -1,30 +1,22 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const MotionLink = motion(Link)
-
 const links = [
-  { label: 'Work', href: '/projects' },
-  { label: 'About', href: '/about' },
-  { label: 'Design Engineering', href: '/design-engineering' },
-  { label: 'Fintech', href: '/fintech' },
+  { label: 'Work', href: '#work' },
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const location = useLocation()
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handler)
     return () => window.removeEventListener('scroll', handler)
   }, [])
-
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [location.pathname])
 
   return (
     <>
@@ -49,33 +41,29 @@ export default function Nav() {
           transition: 'all 0.4s ease',
         }}
       >
-        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none' }}>
+        <a href="#" style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none' }}>
           <img src="/iyodo-logo.svg" alt="iyodo.design" style={{ height: '24px', width: 'auto' }} />
-        </Link>
+        </a>
 
         {/* Desktop nav */}
         <nav className="nav-links">
-          {links.map((link) => {
-            const isActive = location.pathname === link.href
-            return (
-              <Link
-                key={link.href}
-                to={link.href}
-                style={{
-                  fontSize: '0.8125rem',
-                  color: isActive ? 'var(--text-primary)' : 'var(--text-muted)',
-                  textDecoration: 'none',
-                  transition: 'color 0.2s',
-                  letterSpacing: '0.02em',
-                  fontWeight: isActive ? 500 : 400,
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? 'var(--text-primary)' : 'var(--text-muted)')}
-              >
-                {link.label}
-              </Link>
-            )
-          })}
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              style={{
+                fontSize: '0.8125rem',
+                color: 'var(--text-muted)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+                letterSpacing: '0.02em',
+              }}
+              onMouseEnter={(e) => (e.target.style.color = 'var(--text-primary)')}
+              onMouseLeave={(e) => (e.target.style.color = 'var(--text-muted)')}
+            >
+              {link.label}
+            </a>
+          ))}
           <a
             href="https://calendly.com/davidoiyodo/discovery-call"
             target="_blank"
@@ -129,23 +117,24 @@ export default function Nav() {
             }}
           >
             {links.map((link, i) => (
-              <MotionLink
+              <motion.a
                 key={link.href}
-                to={link.href}
+                href={link.href}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: i * 0.07 }}
+                onClick={() => setMenuOpen(false)}
                 style={{
                   fontSize: '3rem',
                   fontWeight: 600,
-                  color: location.pathname === link.href ? 'var(--text-primary)' : 'var(--text-muted)',
+                  color: 'var(--text-primary)',
                   textDecoration: 'none',
                   padding: '0.75rem 0',
                   borderBottom: '1px solid var(--border)',
                 }}
               >
                 {link.label}
-              </MotionLink>
+              </motion.a>
             ))}
           </motion.div>
         )}

@@ -120,20 +120,6 @@ body {
   gap: 4rem;
   align-items: end;
 }
-.specialty-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 4rem;
-  align-items: start;
-}
-.fintech-project-row {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 2rem;
-  padding: 2rem 0;
-  border-bottom: 1px solid var(--border);
-  align-items: start;
-}
 
 /* Project card content padding */
 .project-content-left  { padding: 4rem 3.5rem 4rem 0; }
@@ -159,8 +145,6 @@ body {
   .about-grid        { grid-template-columns: 1fr; gap: 2.5rem; }
   .experience-role-grid { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
   .contact-grid      { grid-template-columns: 1fr; gap: 2.5rem; }
-  .specialty-grid    { grid-template-columns: 1fr; gap: 2.5rem; }
-  .fintech-project-row { grid-template-columns: 1fr; gap: 0.75rem; }
 
   /* Project content padding */
   .project-content-left,
