@@ -1,6 +1,3 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-
 const projects = [
   {
     index: '01',
@@ -8,7 +5,7 @@ const projects = [
     category: 'Travel · Web App',
     role: 'Design + AI Front-end Engineering',
     description:
-      'A travel blogging platform where real travelers share experiences from destinations around the world. I conceived the idea, built the full brand identity, designed the product in Figma, and engineered the front-end using AI-assisted tooling — then handed off to a backend developer for the API and database layer. Everything you see on the front end is mine.',
+      'A place for travellers to share the world through their own experiences. I took it from an idea to a brand, a product design, and a working front end. A backend developer handled the API and database.',
     impact: 'Live product',
     tags: ['Web App', 'Brand Identity', 'UI Design'],
     image: '/travulens.png',
@@ -22,7 +19,7 @@ const projects = [
     category: 'Fintech · Mobile App',
     role: 'Brand + Product Design',
     description:
-      'A fintech app that goes beyond savings and investments — covering loans and bill payments in one experience. I owned the entire product design, from brand identity through to every screen across the full feature set. Built by a development team and live on both the App Store and Google Play.',
+      'Savings, investments, loans, and bills in one app. I designed the brand and the full product experience; the development team brought it to life on iOS and Android.',
     impact: 'Hundreds of millions of ₦ in investments processed',
     tags: ['Mobile App', 'User Research', 'UI Design'],
     image: '/Bankvole.png',
@@ -37,7 +34,7 @@ const projects = [
     category: 'Fintech · Web App · Mobile',
     role: 'Brand + Product Design',
     description:
-      'Connecting traditional banks and fintech lenders to employers — simplifying loan repayment directly from employee income. Redesigned the web app for lenders, employers, and admin, plus the mobile app for employees.',
+      'Making loan repayments easier through employee income. I redesigned the web experience for lenders, employers, and admins, alongside the mobile app for employees.',
     impact: '₦2B+ monthly in loans processed · 150,000 staff onboarded',
     tags: ['Web App', 'Mobile', 'UI Design', 'User Research'],
     image: '/Dedukt.png',
@@ -50,7 +47,7 @@ const projects = [
     category: 'AI · Job Platform · Web App',
     role: 'Brand + Product Design',
     description:
-      'An AI-driven job hunting platform for the Norwegian market with real salary data. Designed the brand identity and the full web app — for both job seekers and employers.',
+      'Helping people in Norway find jobs with real salary information. I created the brand identity and designed the web app for both job seekers and employers.',
     impact: 'Full brand identity + product design',
     tags: ['Brand Identity', 'Web App', 'AI Product'],
     image: '/Lonna-V1.png',
@@ -60,314 +57,34 @@ const projects = [
   },
 ]
 
-function ProjectCard({ project, i }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-
+function ProjectCard({ project }) {
   return (
-    <motion.article
-      ref={ref}
-      initial={{ y: 50, opacity: 0 }}
-      animate={inView ? { y: 0, opacity: 1 } : {}}
-      transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="project-card-grid"
-      style={{
-        gap: '0',
-      }}
-    >
-      {/* Image side */}
-      <div
-        className={`project-img-side ${i % 2 === 0 ? 'img-order-second' : 'img-order-first'}`}
-        style={{
-          overflow: 'hidden',
-          position: 'relative',
-          padding: '4rem 0',
-        }}
-      >
-        <motion.img
-          src={project.image}
-          alt={project.title}
-          whileHover={{ scale: 1.04 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            display: 'block',
-            filter: 'grayscale(20%) brightness(0.85)',
-          }}
-        />
+    <article className="project-card">
+      <div className={`project-image project-image-${project.index}`}>
+        <img src={project.image} alt={`${project.title} product design`} loading="lazy" />
       </div>
-
-      {/* Content side */}
-      <div
-        className={`${i % 2 === 0 ? 'project-content-left content-order-first' : 'project-content-right content-order-second'}`}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-        }}
-      >
-        <div>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              marginBottom: '2.5rem',
-            }}
-          >
-            <span
-              style={{
-                fontSize: '0.75rem',
-                color: 'var(--text-dim)',
-                letterSpacing: '0.1em',
-                fontFamily: 'monospace',
-              }}
-            >
-              {project.index}
-            </span>
-            <span
-              style={{
-                fontSize: '0.7rem',
-                color: 'var(--text-muted)',
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-              }}
-            >
-              {project.category}
-            </span>
-          </div>
-
-          {project.role && (
-            <div style={{ marginBottom: '1.75rem' }}>
-              <span
-                style={{
-                  fontSize: '0.7rem',
-                  color: 'var(--bg-primary)',
-                  backgroundColor: 'var(--text-dim)',
-                  padding: '0.25rem 0.65rem',
-                  borderRadius: '2px',
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  fontWeight: 500,
-                }}
-              >
-                {project.role}
-              </span>
-            </div>
-          )}
-
-          <h3
-            className="font-geist"
-            style={{
-              fontSize: 'clamp(2.5rem, 4vw, 4rem)',
-              fontWeight: 600,
-              lineHeight: 0.95,
-              letterSpacing: '-0.025em',
-              color: 'var(--text-primary)',
-              marginBottom: '1.75rem',
-            }}
-          >
-            {project.title}
-          </h3>
-
-          <p
-            style={{
-              fontSize: '0.9375rem',
-              color: 'var(--text-muted)',
-              lineHeight: 1.75,
-              fontWeight: 300,
-              maxWidth: '520px',
-            }}
-          >
-            {project.description}
-          </p>
-        </div>
-
-        <div>
-          {/* Impact */}
-          <div
-            style={{
-              borderTop: '1px solid var(--border)',
-              paddingTop: '1.5rem',
-              marginBottom: '1.5rem',
-            }}
-          >
-            <p
-              style={{
-                fontSize: '0.8125rem',
-                color: 'var(--text-primary)',
-                letterSpacing: '0.02em',
-              }}
-            >
-              {project.impact}
-            </p>
-          </div>
-
-          {/* Buttons */}
-          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-            {project.appStore || project.playStore ? (
-              <>
-                <a
-                  href={project.appStore || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    fontSize: '0.75rem',
-                    fontWeight: 500,
-                    letterSpacing: '0.04em',
-                    padding: '0.55rem 1.1rem',
-                    borderRadius: '2px',
-                    textDecoration: 'none',
-                    backgroundColor: 'var(--text-primary)',
-                    color: 'var(--bg-primary)',
-                    opacity: project.appStore ? 1 : 0.35,
-                    pointerEvents: project.appStore ? 'auto' : 'none',
-                    transition: 'opacity 0.2s',
-                  }}
-                >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
-                    <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.54 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.029 1.52-.065 2.09-.987 3.925-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/>
-                  </svg>
-                  App Store
-                </a>
-                <a
-                  href={project.playStore || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    fontSize: '0.75rem',
-                    fontWeight: 500,
-                    letterSpacing: '0.04em',
-                    padding: '0.55rem 1.1rem',
-                    borderRadius: '2px',
-                    textDecoration: 'none',
-                    border: '1px solid var(--border)',
-                    color: 'var(--text-primary)',
-                    opacity: project.playStore ? 1 : 0.35,
-                    pointerEvents: project.playStore ? 'auto' : 'none',
-                    transition: 'opacity 0.2s',
-                  }}
-                >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
-                    <path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.492 1.492 0 0 0-.742-.204L13.544 10.989zm0 2.067L2.699 24.111c.244-.067.47-.187.666-.349l13.142-7.48-2.963-2.926z"/>
-                  </svg>
-                  Google Play
-                </a>
-              </>
-            ) : (
-              <>
-                <a
-                  href={project.link || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    fontSize: '0.75rem',
-                    fontWeight: 500,
-                    letterSpacing: '0.04em',
-                    padding: '0.55rem 1.1rem',
-                    borderRadius: '2px',
-                    textDecoration: 'none',
-                    backgroundColor: 'var(--text-primary)',
-                    color: 'var(--bg-primary)',
-                    opacity: project.link ? 1 : 0.35,
-                    pointerEvents: project.link ? 'auto' : 'none',
-                    transition: 'opacity 0.2s',
-                  }}
-                >
-                  View Live Project ↗
-                </a>
-                {!project.hideCaseStudy && <a
-                  href={project.caseStudy || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    fontSize: '0.75rem',
-                    fontWeight: 500,
-                    letterSpacing: '0.04em',
-                    padding: '0.55rem 1.1rem',
-                    borderRadius: '2px',
-                    textDecoration: 'none',
-                    border: '1px solid var(--border)',
-                    color: 'var(--text-primary)',
-                    opacity: project.caseStudy ? 1 : 0.35,
-                    pointerEvents: project.caseStudy ? 'auto' : 'none',
-                    transition: 'opacity 0.2s',
-                  }}
-                >
-                  View Case Study →
-                </a>}
-              </>
-            )}
-          </div>
-        </div>
+      <div className="project-meta"><span>{project.index} / {project.category}</span><span>{project.role}</span></div>
+      <h3 className="font-geist">{project.title}</h3>
+      <p className="project-description">{project.description}</p>
+      <p className="project-impact">{project.impact}</p>
+      <div className="project-actions">
+        {project.appStore && <a className="text-link" href={project.appStore} target="_blank" rel="noopener noreferrer">App Store <span aria-hidden="true">↗</span></a>}
+        {project.playStore && <a className="text-link" href={project.playStore} target="_blank" rel="noopener noreferrer">Google Play <span aria-hidden="true">↗</span></a>}
+        {project.link && <a className="text-link" href={project.link} target="_blank" rel="noopener noreferrer">Visit {project.title} <span aria-hidden="true">↗</span></a>}
+        {project.caseStudy && <a className="text-link" href={project.caseStudy} target="_blank" rel="noopener noreferrer">Read the case study <span aria-hidden="true">↗</span></a>}
       </div>
-    </motion.article>
+    </article>
   )
 }
 
 export default function Work() {
-  const titleRef = useRef(null)
-  const titleInView = useInView(titleRef, { once: true, margin: '-60px' })
-
   return (
-    <section id="work" style={{ borderBottom: '1px solid var(--border)' }}>
-      {/* Section header */}
-      <div
-        className="work-header-pad"
-        style={{
-          borderBottom: '1px solid var(--border)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-end',
-        }}
-      >
-        <motion.h2
-          ref={titleRef}
-          initial={{ y: 30, opacity: 0 }}
-          animate={titleInView ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="font-geist"
-          style={{
-            fontSize: 'clamp(2.25rem, 5vw, 4.5rem)',
-            fontWeight: 600,
-            lineHeight: 1,
-            letterSpacing: '-0.025em',
-            color: 'var(--text-primary)',
-          }}
-        >
-          Selected Work
-        </motion.h2>
-        <span
-          style={{
-            fontSize: '0.8rem',
-            color: 'var(--text-muted)',
-            letterSpacing: '0.05em',
-          }}
-        >
-          {projects.length} Projects
-        </span>
+    <section id="work" className="section-pad section-block" aria-labelledby="work-title">
+      <div className="section-heading">
+        <div><p className="eyebrow">01 / Ideas out in the world</p><h2 id="work-title" className="font-geist">Selected work<span className="accent">.</span></h2></div>
+        <p>Different challenges.{' '}<br />The same care for the details.</p>
       </div>
-
-      {/* Projects */}
-      <div className="work-projects-pad" style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-        {projects.map((project, i) => (
-          <ProjectCard key={project.title} project={project} i={i} />
-        ))}
-      </div>
+      <div className="projects-grid">{projects.map(project => <ProjectCard key={project.title} project={project} />)}</div>
     </section>
   )
 }

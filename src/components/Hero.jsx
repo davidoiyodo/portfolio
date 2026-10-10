@@ -1,239 +1,25 @@
-import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
-
-const fadeUp = (delay = 0) => ({
-  initial: { y: 40, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
-  transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] },
-})
-
 export default function Hero() {
   return (
-    <section
-      className="hero-section"
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        position: 'relative',
-        overflow: 'hidden',
-        borderBottom: '1px solid var(--border)',
-      }}
-    >
-      {/* Background grid lines */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage:
-            'linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)',
-          backgroundSize: '80px 80px',
-          opacity: 0.25,
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Subtle radial glow */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '30%',
-          left: '40%',
-          width: '600px',
-          height: '600px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(240,239,233,0.04) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      <div style={{ position: 'relative', maxWidth: '1400px', width: '100%' }}>
-        {/* Status tag */}
-        <motion.div {...fadeUp(0.1)} style={{ marginBottom: '3rem' }}>
-          <span
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              fontSize: '0.75rem',
-              color: 'var(--text-muted)',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-            }}
-          >
-            <span
-              style={{
-                width: '6px',
-                height: '6px',
-                borderRadius: '50%',
-                backgroundColor: '#4ade80',
-                display: 'inline-block',
-                boxShadow: '0 0 8px #4ade80',
-              }}
-            />
-            Available for new projects
-          </span>
-        </motion.div>
-
-        {/* Big headline */}
-        <motion.h1
-          {...fadeUp(0.2)}
-          className="font-geist"
-          style={{
-            fontSize: 'clamp(3.5rem, 10vw, 9.5rem)',
-            fontWeight: 600,
-            lineHeight: 0.92,
-            letterSpacing: '-0.03em',
-            color: 'var(--text-primary)',
-            marginBottom: '3rem',
-            maxWidth: '1000px',
-          }}
-        >
-          I design products
-          <br />
-          <span style={{ color: 'var(--text-muted)' }}>and ship them.</span>
-        </motion.h1>
-
-        {/* Bottom row */}
-        <motion.div
-          {...fadeUp(0.35)}
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-            flexWrap: 'wrap',
-            gap: '2rem',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <p
-              style={{
-                fontSize: 'clamp(0.9375rem, 1.5vw, 1.0625rem)',
-                color: 'var(--text-muted)',
-                maxWidth: '820px',
-                lineHeight: 1.7,
-                fontWeight: 300,
-              }}
-            >
-              5+ years turning product ideas into live software — across fintech, medtech, web3, and traveltech.
-              I design and prototype in Figma, build marketing sites in Framer, and ship real products through
-              AI-assisted front-end engineering. My design eye and working knowledge of front-end means the code
-              I ship actually looks like the design. No handoff required.
-            </p>
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <a
-                href="https://calendly.com/davidoiyodo/discovery-call"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  backgroundColor: 'var(--text-primary)',
-                  color: 'var(--bg-primary)',
-                  padding: '0.75rem 1.5rem',
-                  fontSize: '0.875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.02em',
-                  textDecoration: 'none',
-                  borderRadius: '2px',
-                  transition: 'opacity 0.2s',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.8')}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
-              >
-                Book a call ↗
-              </a>
-              <a
-                href="mailto:davidoiyodo@gmail.com"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  border: '1px solid var(--border)',
-                  color: 'var(--text-muted)',
-                  padding: '0.75rem 1.5rem',
-                  fontSize: '0.875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.02em',
-                  textDecoration: 'none',
-                  borderRadius: '2px',
-                  transition: 'color 0.2s, border-color 0.2s',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderColor = 'var(--text-primary)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
-              >
-                Shoot me an email
-              </a>
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-            {[
-              { label: 'Behance', href: 'https://behance.net/designsbyiyodo' },
-              { label: 'LinkedIn', href: 'https://linkedin.com/in/david-iyodo' },
-              { label: 'YouTube', href: 'https://www.youtube.com/@DesignwithIyodo' },
-            ].map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  fontSize: '0.8rem',
-                  color: 'var(--text-muted)',
-                  textDecoration: 'none',
-                  letterSpacing: '0.05em',
-                  transition: 'color 0.2s',
-                }}
-                onMouseEnter={(e) => (e.target.style.color = 'var(--text-primary)')}
-                onMouseLeave={(e) => (e.target.style.color = 'var(--text-muted)')}
-              >
-                {s.label} ↗
-              </a>
-            ))}
-          </div>
-        </motion.div>
+    <section id="home" className="hero section-pad" aria-labelledby="hero-title">
+      <div className="hero-intro">
+        <p className="eyebrow">Hi, I’m Iyodo David.</p>
+        <p className="availability"><span aria-hidden="true" /> Available for new projects</p>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="scroll-indicator"
-        style={{
-          position: 'absolute',
-          bottom: '7.5rem',
-          right: '7.5rem',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '0.5rem',
-        }}
-      >
-        <span
-          style={{
-            fontSize: '0.6875rem',
-            color: 'var(--text-dim)',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            writingMode: 'vertical-rl',
-          }}
-        >
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
-          style={{
-            width: '1px',
-            height: '40px',
-            backgroundColor: 'var(--text-dim)',
-          }}
-        />
-      </motion.div>
+      <div className="hero-layout">
+        <h1 id="hero-title" className="font-geist">I design products.<br />And make things<br /><span>I wish existed.</span></h1>
+        <div className="hero-note">
+          <p className="eyebrow">Designer. Builder. Teacher.</p>
+          <p>I turn ideas into digital products, from the first sketch to the front end. And when something catches my curiosity, I usually end up making it.</p>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
+            <a className="text-link" href="mailto:davidoiyodo@gmail.com">Say hello <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+      <div className="hero-footnote">
+        <p>5+ years across fintech, medtech, web3 &amp; traveltech.</p>
+        <a href="#side-projects"><span className="hero-current-label">Currently making</span><span>Design Eye</span><span aria-hidden="true">↗</span></a>
+      </div>
     </section>
   )
 }

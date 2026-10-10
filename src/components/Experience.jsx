@@ -1,6 +1,3 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-
 const roles = [
   {
     company: 'Checkoff Finance Limited',
@@ -43,148 +40,22 @@ const roles = [
 ]
 
 export default function Experience() {
-  const titleRef = useRef(null)
-  const titleInView = useInView(titleRef, { once: true, margin: '-60px' })
-
   return (
-    <section
-      id="experience"
-      className="section-pad"
-      style={{
-        paddingTop: '7rem',
-        paddingBottom: '7rem',
-        borderBottom: '1px solid var(--border)',
-      }}
-    >
-      <div>
-        {/* Header */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-            marginBottom: '0',
-            paddingBottom: '2rem',
-            borderBottom: '1px solid var(--border)',
-          }}
-        >
-          <motion.h2
-            ref={titleRef}
-            initial={{ y: 30, opacity: 0 }}
-            animate={titleInView ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="font-geist"
-            style={{
-              fontSize: 'clamp(2.25rem, 5vw, 4.5rem)',
-              fontWeight: 600,
-              lineHeight: 1,
-              letterSpacing: '-0.025em',
-              color: 'var(--text-primary)',
-            }}
-          >
-            Experience
-          </motion.h2>
-          <span
-            style={{ fontSize: '0.8rem', color: 'var(--text-muted)', letterSpacing: '0.05em' }}
-          >
-            {roles.length} Roles
-          </span>
-        </div>
-
-        {/* Roles */}
-        <div>
-          {roles.map((role, i) => (
-            <RoleRow key={role.company} role={role} i={i} />
-          ))}
-        </div>
+    <section id="experience" className="section-pad section-block" aria-labelledby="experience-title">
+      <div className="section-heading"><div><p className="eyebrow">04 / Teams &amp; collaborations</p><h2 id="experience-title" className="font-geist">Along the way<span className="accent">.</span></h2></div><p>The teams I’ve joined and the work we’ve made together.</p></div>
+      <div className="experience-list">
+        {roles.map(role => (
+          <details className="experience-item" key={role.company}>
+            <summary>
+              <div className="company-mark"><img src={role.logo} alt="" loading="lazy" /></div>
+              <div className="experience-company"><h3>{role.company}</h3><p>{role.role}</p></div>
+              <div className="experience-period"><p>{role.period}</p><p>{role.location}</p></div>
+              <span className="experience-disclosure" aria-hidden="true">+</span>
+            </summary>
+            <p className="experience-description">{role.description}</p>
+          </details>
+        ))}
       </div>
     </section>
-  )
-}
-
-function RoleRow({ role, i }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ y: 30, opacity: 0 }}
-      animate={inView ? { y: 0, opacity: 1 } : {}}
-      transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="experience-role-grid"
-    >
-      {/* Left */}
-      <div>
-        {/* Logo */}
-        <div
-          style={{
-            width: '48px',
-            height: '48px',
-            marginBottom: '1.25rem',
-            border: '1px solid var(--border)',
-            borderRadius: '8px',
-            overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'var(--bg-secondary)',
-          }}
-        >
-          {role.logo ? (
-            <img
-              src={role.logo}
-              alt={role.company}
-              style={{ height: role.logoWidth ? 'auto' : '32px', width: role.logoWidth || 'auto', objectFit: 'contain' }}
-            />
-          ) : (
-            <span
-              style={{
-                fontSize: '1rem',
-                fontWeight: 600,
-                color: 'var(--text-dim)',
-                fontFamily: 'monospace',
-              }}
-            >
-              {role.company.charAt(0)}
-            </span>
-          )}
-        </div>
-        <p
-          className="font-geist"
-          style={{
-            fontSize: '1.125rem',
-            fontWeight: 500,
-            color: 'var(--text-primary)',
-            marginBottom: '0.4rem',
-            letterSpacing: '-0.01em',
-          }}
-        >
-          {role.company}
-        </p>
-        <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>
-          {role.role}
-        </p>
-        <p style={{ fontSize: '0.75rem', color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
-          {role.period}
-        </p>
-        <p style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginTop: '0.2rem' }}>
-          {role.location}
-        </p>
-      </div>
-
-      {/* Right */}
-      <p
-        style={{
-          fontSize: '0.9375rem',
-          color: 'var(--text-muted)',
-          lineHeight: 1.75,
-          fontWeight: 300,
-          paddingTop: 'calc(48px + 1.25rem)',
-        }}
-      >
-        {role.description}
-      </p>
-    </motion.div>
   )
 }
